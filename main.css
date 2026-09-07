@@ -176,8 +176,17 @@ body::after {
 	transition: transform 0.25s ease;
 }
 
+.remember-forgot a:focus-visible,
+.register-link p a:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 4px;
+	border-radius: 4px;
+}
+
 .remember-forgot a:hover::after,
-.register-link p a:hover::after {
+.remember-forgot a:focus-visible::after,
+.register-link p a:hover::after,
+.register-link p a:focus-visible::after {
 	transform: scaleX(1);
 	transform-origin: left;
 }
@@ -206,6 +215,11 @@ body::after {
 
 .wrapper .btn:active {
 	transform: translateY(0);
+}
+
+.wrapper .btn:focus-visible {
+	outline: 2px solid #f5fcff;
+	outline-offset: 3px;
 }
 
 .wrapper .register-link {
@@ -238,5 +252,15 @@ body::after {
 	.wrapper .remember-forgot {
 		flex-direction: column;
 		align-items: flex-start;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
 	}
 }
